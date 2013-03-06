@@ -1,2 +1,1 @@
-energyplus
-==========
+EnergyPlus installation cookbook
