@@ -6,7 +6,7 @@
 
 # handle the differing platforms
 remote_file "#{Chef::Config[:file_cache_path]}/SetEPlusV#{node[:energyplus][:version]}-lin-64.sh" do
-  source "http://zerodev-128488.nrel.gov/openstudio/SetEPlusV#{node[:energyplus][:version]}-lin-64.sh"
+  source "http://zerodev-128488.nrel.gov/energyplus/SetEPlusV#{node[:energyplus][:version]}-lin-64.sh"
   mode 00755
   checksum node[:energyplus][:checksum]
 end
