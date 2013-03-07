@@ -12,20 +12,22 @@
 #end
 
 # only works for 64 bit machines right now because it has to move lib directories:  x86_64-linux
-bash "install_energyplus" do
-  #password = ftxeDhpZ2
-  cwd Chef::Config[:file_cache_path]
+if platform_family?("debian")
+  bash "install_energyplus" do
+    #password = ftxeDhpZ2
+    cwd Chef::Config[:file_cache_path]
 
-  #use the version that is in the vagrant directory for now
-  code <<-EOH
-    cd /vagrant
-    tar xzf energyplus_linux_64.tar.gz
-    mv EnergyPlus-7-1-0 /usr/local/
+    #use the version that is in the vagrant directory for now
+    code <<-EOH
+      cd /vagrant
+      tar xzf energyplus_linux_64.tar.gz
+      mv EnergyPlus-7-1-0 /usr/local/
 
-    cd /usr/local/bin
-    find ../EnergyPlus-7-1-0/bin/ -type f -perm -o+rx -exec ln -s {} \;
-  EOH
+      cd /usr/local/bin
+      find ../EnergyPlus-7-1-0/bin/ -type f -perm -o+rx -exec ln -s {} \\;
+    EOH
 
-  not_if { ::File.exists?("/usr/local/bin/energyplus") }
+    not_if { ::File.exists?("/usr/local/bin/energyplus") }
+  end
 end
 
