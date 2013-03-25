@@ -9,7 +9,7 @@ if platform_family?("debian")
   remote_file "#{Chef::Config[:file_cache_path]}/EnergyPlus-#{node[:energyplus][:version]}-Linux-64.tar.gz" do
     source "http://developer.nrel.gov/downloads/buildings/EnergyPlus-#{node[:energyplus][:version]}-Linux-64.tar.gz"
     mode 00755
-    checksum node[:energyplus][:checksum]
+    #checksum node[:energyplus][:checksum]
   end
 
   # only works for 64 bit machines right now because it has to move lib directories:  x86_64-linux
@@ -19,7 +19,6 @@ if platform_family?("debian")
 
     #use the version that is in the vagrant directory for now
     code <<-EOH
-      cd /vagrant
       tar xzf EnergyPlus-#{node[:energyplus][:version]}-Linux-64.tar.gz
       mv EnergyPlus-7-1-0 /usr/local/
 
