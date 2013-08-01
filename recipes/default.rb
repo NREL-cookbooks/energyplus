@@ -6,7 +6,7 @@
 
 # handle the differing platforms
 if platform_family?("debian")
-  filename = "EnergyPlus-#{node[:energyplus][:version]}-#{node[:energyplus][:platform]}.tar.gz"
+  filename = "EPlusV#{node[:energyplus][:version]}-#{node[:energyplus][:platform]}.tar.gz"
   file_path = "#{Chef::Config[:file_cache_path]}/#{filename}"
   src_path = "#{node[:energyplus][:download_url]}/#{filename}"
 
