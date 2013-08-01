@@ -31,6 +31,10 @@ if platform_family?("debian")
       find ../EnergyPlus-#{node[:energyplus][:long_version].gsub(".","-")}/EnergyPlus -type f -perm -o+rx -exec ln -s {} \\;
       find ../EnergyPlus-#{node[:energyplus][:long_version].gsub(".","-")}/ExpandObjects -type f -perm -o+rx -exec ln -s {} \\;
       find ../EnergyPlus-#{node[:energyplus][:long_version].gsub(".","-")}/EPMacro -type f -perm -o+rx -exec ln -s {} \\;
+
+      # in some versions the file is downcased and in the bin
+      find ../EnergyPlus-#{node[:energyplus][:long_version].gsub(".","-")}/bin/energyplus -type f -perm -o+rx -exec ln -s {} \\;
+
     EOH
 
     not_if { ::File.exists?("/usr/local/bin/energyplus") }
