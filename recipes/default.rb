@@ -24,11 +24,13 @@ if platform_family?("debian")
 
     #use the version that is in the vagrant directory for now
     code <<-EOH
-      tar xzf EnergyPlus-#{node[:energyplus][:version]}-#{node[:energyplus][:platform]}.tar.gz
-      mv EnergyPlus-#{node[:energyplus][:version].gsub(".","-")} /usr/local/
+      tar xzf #{filename}
+      mv EnergyPlus-#{node[:energyplus][:long_version].gsub(".","-")} /usr/local/
 
       cd /usr/local/bin
-      find ../EnergyPlus-#{node[:energyplus][:version].gsub(".","-")}/bin/ -type f -perm -o+rx -exec ln -s {} \\;
+      find ../EnergyPlus-#{node[:energyplus][:long_version].gsub(".","-")}/EnergyPlus -type f -perm -o+rx -exec ln -s {} \\;
+      find ../EnergyPlus-#{node[:energyplus][:long_version].gsub(".","-")}/ExpandObjects -type f -perm -o+rx -exec ln -s {} \\;
+      find ../EnergyPlus-#{node[:energyplus][:long_version].gsub(".","-")}/EPMacro -type f -perm -o+rx -exec ln -s {} \\;
     EOH
 
     not_if { ::File.exists?("/usr/local/bin/energyplus") }
