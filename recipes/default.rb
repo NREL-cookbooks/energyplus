@@ -37,7 +37,7 @@ if platform_family?("debian")
 
     EOH
 
-    not_if { ::File.exists?("/usr/local/bin/energyplus") }
+    not_if { ::File.exists?("/usr/local/bin/EnergyPlus") }
   end
 end
 
