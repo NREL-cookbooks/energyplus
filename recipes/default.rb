@@ -6,9 +6,13 @@
 
 # handle the differing platforms
 if platform_family?("debian")
-  remote_file "#{Chef::Config[:file_cache_path]}/EnergyPlus-#{node[:energyplus][:version]}-Linux-64.tar.gz" do
-    source "http://developer.nrel.gov/downloads/buildings/EnergyPlus-#{node[:energyplus][:version]}-Linux-64.tar.gz"
-    #checksum node[:energyplus][:checksum]
+  filename = "EnergyPlus-#{node[:energyplus][:version]}-#{node[:energyplus][:platform]}.tar.gz"
+  file_path = "#{Chef::Config[:file_cache_path]}/#{filename}"
+  src_path = "#{node[:energyplus][:download_url]}/#{filename}"
+
+  remote_file file_path do
+    source src_path
+    #checksum chk_sum
     mode 00755
 
     action :create_if_missing
@@ -20,7 +24,7 @@ if platform_family?("debian")
 
     #use the version that is in the vagrant directory for now
     code <<-EOH
-      tar xzf EnergyPlus-#{node[:energyplus][:version]}-Linux-64.tar.gz
+      tar xzf EnergyPlus-#{node[:energyplus][:version]}-#{node[:energyplus][:platform]}.tar.gz
       mv EnergyPlus-#{node[:energyplus][:version].gsub(".","-")} /usr/local/
 
       cd /usr/local/bin
