@@ -5,7 +5,7 @@
 # Copyright 2013, NREL
 
 # handle the differing platforms
-if platform_family?("debian")
+if platform_family?("debian") || platform_family?("rhel")
   filename = "EPlusV#{node[:energyplus][:version]}-#{node[:energyplus][:platform]}.tar.gz"
   file_path = "#{Chef::Config[:file_cache_path]}/#{filename}"
   src_path = "#{node[:energyplus][:download_url]}/#{filename}"
@@ -18,7 +18,9 @@ if platform_family?("debian")
     action :create_if_missing
   end
 
+  #if platform_family?("debian")
   # only works for 64 bit machines right now because it has to move lib directories:  x86_64-linux
+  # need to make this a resource and allow upgrades
   bash "install_energyplus" do
     cwd Chef::Config[:file_cache_path]
 
@@ -38,5 +40,8 @@ if platform_family?("debian")
 
     not_if { ::File.exists?("/usr/local/bin/EnergyPlus") }
   end
+else
+  Chef::Log.warn("Installing from a #{node['platform_family']} installer is not yet not supported by this cookbook")
+  
 end
 
