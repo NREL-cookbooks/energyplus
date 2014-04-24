@@ -7,7 +7,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.require_version ">= 1.5.0"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.hostname = "openstudio-berkshelf"
+  config.vm.hostname = "energyplus-berkshelf"
   config.omnibus.chef_version = :latest
 
   # Every Vagrant virtual environment requires a box to build off of.
