@@ -1,4 +1,4 @@
-default[:energyplus][:version] = "800008"
+default[:energyplus][:version] = "800009"
 default[:energyplus][:long_version] = "8.0.0"
 
 default[:energyplus][:download_url] = "http://developer.nrel.gov/downloads/buildings/energyplus/builds"
