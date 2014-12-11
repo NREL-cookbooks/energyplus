@@ -7,6 +7,7 @@
 # this should get moved to a resource
 
 
+# TODO: use Chef version method instead of semantic gem
 chef_gem 'semantic'
 require 'semantic'
 require 'semantic/core_ext'
@@ -17,4 +18,3 @@ if platform_family?("debian") || platform_family?("rhel")
 else
   Chef::Log.warn("Installing from a #{node['platform_family']} installer is not yet not supported by this cookbook")
 end
-

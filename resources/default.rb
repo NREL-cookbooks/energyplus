@@ -16,6 +16,3 @@ default_action :install
 attribute :version_long, :kind_of => String, :name_attribute => true
 
 attr_accessor :exists
-
-
-
