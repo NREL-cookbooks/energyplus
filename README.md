@@ -19,7 +19,7 @@ The add recipe to your run list or as include_recipe.
 
 or
 
-`include_recipe['energyplus']`
+`include_recipe 'energyplus'`
 
 # Attributes
 default[:energyplus][:version] - Version of EnergyPlus as defined by the download. * Defaults: "800009" *
