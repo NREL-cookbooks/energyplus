@@ -6,7 +6,7 @@
 
 # this should get moved to a resource
 
-if platform_family?("debian") || platform_family?("rhel")
+if platform_family?('debian') || platform_family?('rhel')
   # determine how to install energyplus based on the version
   energyplus node[:energyplus][:long_version]
 else

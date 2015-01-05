@@ -4,6 +4,7 @@
 * Use Ubuntu 14.04 in Vagrant file
 * Remove semantic gem in favor of Chef::VersionConstraint
 * Support for install EnergyPlus 8.2 from Github
+# Default to 8.2
 
 ## 0.2.1:
 * Force the installation of EnergyPlus into /usr/local/EnergyPlus-x.y.z
