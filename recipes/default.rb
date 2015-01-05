@@ -6,12 +6,6 @@
 
 # this should get moved to a resource
 
-
-# TODO: use Chef version method instead of semantic gem
-chef_gem 'semantic'
-require 'semantic'
-require 'semantic/core_ext'
-
 if platform_family?("debian") || platform_family?("rhel")
   # determine how to install energyplus based on the version
   energyplus node[:energyplus][:long_version]
