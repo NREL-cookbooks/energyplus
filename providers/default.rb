@@ -11,6 +11,12 @@ action :install do
   Chef::Log.info "Installing EnergyPlus resource of #{new_resource.name}"
 
   if Chef::VersionConstraint.new('>= 8.2.0').include?(new_resource.name)
+    # Install some dependencies
+
+    if platform_family?('debian')
+      package 'libgfortran3'
+    end
+
     # Install via github files which are different than extracting the tarballs
     # Example URL is
     #     https://github.com/NREL/EnergyPlus/releases/download/v8.2.0-Update-1.2/EnergyPlus-8.2.0-8397c2e30b-Linux-x86_64.sh
