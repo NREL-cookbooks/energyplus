@@ -12,7 +12,6 @@ action :install do
 
   if Chef::VersionConstraint.new('>= 8.2.0').include?(new_resource.name)
     # Install some dependencies
-
     if platform_family?('debian')
       package 'libgfortran3'
     end
