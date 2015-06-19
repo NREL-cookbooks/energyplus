@@ -1,5 +1,8 @@
 # CHANGELOG for EnergyPlus
 
+## 0.2.4
+* Remove downloads from developer.nrel.gov for EnergyPlus 8.2
+
 ## 0.2.3
 * Default to 8.3
 
